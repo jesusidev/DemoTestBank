@@ -17,6 +17,9 @@ Run Development
 Build for Production
 `npm run build`
 
+Testing
+`npm run test`
+
 ## The Folder Structure
 
 Everything is in your src directory.
