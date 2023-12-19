@@ -11,6 +11,7 @@ const StyledContainer = styled(Container)(() => ({
   alignItems: 'center',
   justifyContent: 'center',
   margin: '4em 0',
+  textAlign: 'center',
 }));
 export default function Content({ title, children }: ContentProps) {
   return (
