@@ -27,12 +27,21 @@ type FormData = {
 };
 
 const formSchema = z.object({
-  accountNumber: z.string().min(8).max(17),
+  accountNumber: z
+    .string()
+    .min(8)
+    .max(17)
+    .transform((value) => Number(value)),
   routingNumber: z
     .string()
     .regex(
       /^(00|01|02|03|04|05|06|07|08|09|10|11|12|21|22|23|24|25|26|27|28|29|30|31|32|61|62|63|64|65|66|67|68|69|70|71|72|80)\d{7}$/,
-    ),
+      {
+        message:
+          'Routing numbers must start with 00-12, 21-32, 61-72, or 80 and include 9 digits.',
+      },
+    )
+    .transform((value) => Number(value)),
   depositAmount: z
     .string()
     .transform((value) => Number(value.replace(/,/g, '')))
@@ -77,7 +86,7 @@ export default function NewDirectDepositForm({
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <TextField {...field} type="text" label="Account Number" />
+              <TextField {...field} type="number" label="Account Number" />
             )}
           />
           {errors.accountNumber && (
@@ -91,7 +100,7 @@ export default function NewDirectDepositForm({
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <TextField {...field} type="text" label="Routing Number" />
+              <TextField {...field} type="number" label="Routing Number" />
             )}
           />
           {errors.routingNumber && (
