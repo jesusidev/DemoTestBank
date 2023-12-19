@@ -58,7 +58,6 @@ export default function NewDirectDepositForm({
   });
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
     dispatch({ type: Action.FORM_SUBMISSIONS, payload: data });
     setCurrentStep(2);
   };

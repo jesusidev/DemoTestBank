@@ -24,6 +24,7 @@ export default function DirectDeposit() {
         textAlign="center"
         minHeight="350px"
         justifyContent="center"
+        width={{ xs: '100%', md: '50%' }}
       >
         <CurrentComponent setCurrentStep={setCurrentStep} />
       </Box>
